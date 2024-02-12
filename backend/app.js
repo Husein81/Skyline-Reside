@@ -36,7 +36,7 @@ app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 4000;
 
-const start= async ()=>{
+const start= async () => {
     try{
         //connect to DB
         await connection(process.env.MONGO_CONNECT);
