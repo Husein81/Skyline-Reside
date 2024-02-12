@@ -19,13 +19,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-const __dirname = path.resolve();
 
 
 app.use('/api/user', userRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/listing', listingRouter);
 
+const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, '/frontend/dist')));
 
 app.get('*',(req, res) => {
