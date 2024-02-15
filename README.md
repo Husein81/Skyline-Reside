@@ -1,47 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
 
-00:00 - Intro
-02:42 - Project preview
-07:57 - Install React js and Tailwind CSS and create the first template
-22:13 - Create pages and routes
-28:13 - Create Header component 
-44:58 - Create and run the server 
-54:38 - Connect to database 
-01:05:32 - Create user model
-01:12:25 - Create a test api route
-01:22:35 - Create sign up API route
-01:40:28 - Create a middleware and a function to handle possible errors
-01:50:03 - Complete sign up page Ul
-01:58:55 - Complete sign up page functionality
-02:15:53 - Create sign in API route
-02:33:40 - Complete sign in page functionality
-02:38:51 - Add redux toolkit
-02:53:27 - Add redux persist
-03:00:01 - Add Google OAuth functionality
-03:27:54 - Update the header and make the profile page private
-03:36:09 - Complete profile page Ul
-03:43:58 - Complete image upload functionality
-04:11:40 - Create update user API route
-04:28:41 - Complete update user functionality 
-04:47:15 - Add delete user functionality
-04:57:08 - Add sign out user functionality
-05:02:36 - Add create listing API route
-05:16:29 - Complete create listing page Ul
-05:41:55 - Complete upload listing images functionality 
-06:09:38 - Complete create listing page functionality 
-06:36:55 - Create get user listings API route
-06:44:38 - Complete show user listings functionality
-07:00:06 - Complete delete user listing functionality
-07:09:14 - Create update listing API route
-07:16:55 - Complete update listing functionality 
-07:33:18 - Add image slider to the listing page
-07:52:34 - Complete listing page
-08:05:10 - Add contact landlord functionality to the listing page
-08:27:53 - Create search API route
-08:45:07 - Complete header search form functionality
-08:53:41 - Create search page Ul
-09:09:43 - Add onChange and onSubmit functionality to the search page
-09:33:29 - Create the listing item component and show listings
-10:05:20 - Add show more listings functionality
-10:14:00 - Complete home page
-10:39:04 - Complete about page
-10:42:11 - Deploy to render
+<body>
+
+  <header>
+      <h1>Skyline Reside - Real Estate Website</h1>
+    </header>
+
+  <section id="features">
+        <h2>Features</h2>
+        <ul>
+            <li><strong>Property Listings:</strong> Browse through a wide range of property listings, including houses,
+                apartments, condos, and more.</li>
+            <li><strong>Search Functionality:</strong> Use advanced search filters to find properties based on location,
+                price range, amenities, and more.</li>
+            <li><strong>Property Details:</strong> View detailed information about each property, including
+                descriptions, photos, floor plans, and virtual tours.</li>
+            <li><strong>User Accounts:</strong> Sign up for a user account to save favorite listings, receive
+                personalized recommendations, and track property views.</li>
+            <li><strong>Agent Profiles:</strong> Explore profiles of real estate agents, including their expertise,
+                contact information, and client reviews.</li>
+            <li><strong>Contact Agents:</strong> Easily connect with agents to schedule property viewings, ask
+                questions, and negotiate deals.</li>
+            <li><strong>Responsive Design:</strong> Enjoy a seamless browsing experience across desktop, tablet, and
+                mobile devices.</li>
+        </ul>
+    </section>
+
+  <section id="technologies">
+        <h2>Technologies Used</h2>
+        <ul>
+            <li><strong>Frontend:</strong> React.js, Redux, React Router</li>
+            <li><strong>Backend:</strong> Node.js, Express.js</li>
+            <li><strong>Database:</strong> MongoDB</li>
+            <li><strong>Authentication:</strong> JSON Web Tokens (JWT)</li>
+            <li><strong>API Integration:</strong> Google Maps API for location services</li>
+            <li><strong>Styling:</strong> CSS Modules, Bootstrap</li>
+            <li><strong>Deployment:</strong> Heroku, Netlify</li>
+        </ul>
+    </section>
+
+  <section id="installation">
+        <h2>Installation</h2>
+        <ol>
+            <li>Clone the repository:</li>
+            <code>git clone https://github.com/your-username/skyline-reside.git</code>
+            <li>Navigate to the project directory:</li>
+            <code>cd skyline-reside</code>
+            <li>Install dependencies for both the frontend and backend:</li>
+            <code>cd client<br>npm install<br>cd ..<br>cd server<br>npm install</code>
+            <li>Start the development servers:</li>
+            <code>cd client<br>npm start<br>cd ..<br>cd server<br>npm start</code>
+            <li>Access the website in your browser:</li>
+            <code>http://localhost:3000</code>
+        </ol>
+    </section>
+
+  <section id="contributing">
+        <h2>Contributing</h2>
+        <p>Contributions to Skyline Reside are welcome! If you'd like to contribute new features, bug fixes, or
+            improvements, please fork the repository and submit a pull request.</p>
+    </section>
+
+  <section id="license">
+        <h2>License</h2>
+        <p>This project is licensed under the MIT License. See the <a href="LICENSE">LICENSE</a> file for details.
+        </p>
+    </section>
+
+
+
+</body>
+
+</html>
