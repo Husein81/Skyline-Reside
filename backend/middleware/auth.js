@@ -4,13 +4,13 @@ import jwt from 'jsonwebtoken';
 import User from "../models/user.js";
 
 export const isAuthenticatedUser = asyncHandler(async(req, res,next) => {
-    const token = req.headers.authorization?.split(' ')[1]; // Extract token from 'Bearer <token>'
+    const token =req.cookies.jwt // Extract token from 'Bearer <token>'
    
     if(!token){
         throw new UnauthenticatedError('Login first to access this resource');
     }
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = await User.findById(decoded.userId);
+    req.user = await User.findById(decoded.id);
     next()
 })
 

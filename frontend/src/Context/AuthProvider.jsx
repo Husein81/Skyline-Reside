@@ -23,7 +23,6 @@ export const AuthProvider = ({children}) => {
     try {
       const { data }  = await axios.post("/api/auth/signin", formData);
       const  { token }  = data;
-      console.log(token);
       const user = data.rest._doc;
  
       // Update state

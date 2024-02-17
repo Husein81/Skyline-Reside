@@ -9,8 +9,6 @@ import authRouter from './routes/auth.js'
 import { errorHandlerMiddleware } from "./middleware/error-handler.js";
 import  cors  from 'cors';
 
-
-
 dotenv.config();
 const app = express();
 
@@ -40,7 +38,7 @@ const start= async () => {
     try{
         //connect to DB
         await connection(process.env.MONGO_CONNECT);
-        const server = app.listen(port,()=>{
+        app.listen(port,()=>{
             console.log(`Server is listening on port ${port}...`)
         })
     }catch(error){

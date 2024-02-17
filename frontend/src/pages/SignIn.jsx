@@ -10,7 +10,6 @@ import TwitterAuth from '../components/TwitterAuth';
 
 const SignIn = () => {
 
-  
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -34,14 +33,27 @@ const SignIn = () => {
     <div className="p-3 max-w-lg mx-auto">
       <h1 className="text-3xl text-center font-semibold my-7">Sign In</h1>
       <form onSubmit={handleSubmit} action="" className="flex flex-col gap-4">
-        <input type="text" placeholder="username" className="border p-3 rounded-lg" name="username" onChange={handleChange} value={formData.username} autoComplete='username'/>
-        <input type="password" placeholder="password" className="border p-3 rounded-lg"name="password" onChange={handleChange} value={formData.password} autoComplete='current-password'/>
+        <input type="text" 
+        placeholder="username" 
+        className="border p-3 rounded-lg"
+        name="username" 
+        onChange={handleChange} 
+        value={formData.username} 
+        autoComplete='username'/>
+        <input 
+        type="password" 
+        placeholder="password" 
+        className="border p-3 rounded-lg"
+        name="password" 
+        onChange={handleChange} 
+        value={formData.password} 
+        autoComplete='current-password'/>
         <button 
         disabled={loading} 
         className="bg-slate-700 text-white rounded-lg p-3 disabled:opacity-80 uppercase hover:opacity-95">
         {loading ? 'Loading...' : 'Sign In'}
         </button>
-      {error && <p className='text-red-500 mt-5'>{error}</p>}
+        {error && <p className='text-red-500 mt-5'>{error}</p>}
         <hr className='font-bold' />
         <div className="flex gap-4 justify-center">
         <GoogleAuth/>

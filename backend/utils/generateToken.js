@@ -6,7 +6,7 @@ const generateToken = (res, userId) => {
     });
 
     const OneDay = 100*24*60*60;
-    res.cookie('token', token, {
+    res.cookie('jwt', token, {
         httpOnly:true,
         secure:'production',
         sameSite:'strict',

@@ -25,7 +25,7 @@ export const signup = asyncHandler(async (req, res) => {
   });
 });
 
-export const signin = asyncHandler(async(req, res, next ) => {
+export const signin = asyncHandler(async(req, res ) => {
   const { username, password } = req.body;
   try { 
     const user = await User.findOne({ username });
@@ -35,10 +35,10 @@ export const signin = asyncHandler(async(req, res, next ) => {
     if(!vaildPassword)
       throw new UnauthenticatedError('Invalid Ceedentials')
     
-    const token = generateToken(res, user._id);
+    generateToken(res, user._id);
 
     const { password: pass,...rest } = user
-    res.status(StatusCodes.OK).json({ rest ,token })
+    res.status(StatusCodes.OK).json({ rest  })
   }catch(error){
     next(error);
   }

@@ -141,10 +141,6 @@ const UpdateListing = () => {
       const { data } = await axios.put(`/api/listing/update/${id}`, {
         ...formData,
         userRef: currentUser._id,
-      }, { 
-        headers: {
-          'Authorization': `Bearer ${authToken}`,
-        }
       });
       setLoading(false);
       navigate(`/listing/${id}`);

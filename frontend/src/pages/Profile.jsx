@@ -78,11 +78,7 @@ const Profile = () => {
     e.preventDefault();
     try{
       console.log(formData)
-      const { data } = await axios.put(`/api/user/update/${currentUser._id}`,formData,{
-        headers:{
-          'Authorization': `Bearer ${authToken}`
-        }
-      });
+      const { data } = await axios.put(`/api/user/update/${currentUser._id}`,formData);
       setCurrentUser(data);
       setUpdateSuccess(true);
     }catch(error){
@@ -91,11 +87,7 @@ const Profile = () => {
   }
   const handleDeleteUser = async () => {
     try{
-      await axios.delete(`/api/user/delete/${currentUser._id}`,{
-        headers:{
-          'Authorization':`Bearer ${authToken}`,
-        }
-      });
+      await axios.delete(`/api/user/delete/${currentUser._id}`);
     }catch(error){
       console.log(error)
     }
