@@ -11,7 +11,7 @@ export const GoogleAuth = () => {
 
   const navigate = useNavigate();
   const { currentUser, setCurrentUser } = useAuth();
-
+  console.log(currentUser)
   const handleGoogleClick = async () => {
     
     try{
@@ -24,7 +24,7 @@ export const GoogleAuth = () => {
         email: result.user.email,
         photo: result.user.photoURL,
       });
-
+      console.log(data)
       const  user  = data._doc;
     
       localStorage.setItem('currentUser', JSON.stringify(user));

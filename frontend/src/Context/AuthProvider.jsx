@@ -7,11 +7,9 @@ const AuthContext = createContext();
 // eslint-disable-next-line react/prop-types
 export const AuthProvider = ({children}) => {
   // Retrieve token and user data from localStorage
-  const storedToken = localStorage.getItem('token');
   const storedUser =JSON.parse(localStorage.getItem('currentUser'));
 
   // Set initial state with stored values or defaults
-  const [authToken, setAuthToken] = useState(storedToken);
   const [currentUser, setCurrentUser] = useState(storedUser);
 
   const [loading, setLoading] = useState(false);
@@ -22,18 +20,16 @@ export const AuthProvider = ({children}) => {
     setLoading(true);
     try {
       const { data }  = await axios.post("/api/auth/signin", formData);
-      const  { token }  = data;
+  
       const user = data.rest._doc;
  
       // Update state
       setCurrentUser(user);
-      setAuthToken(token);
   
       // Store data in localStorage
       const signInTime = new Date().getTime();
 
       localStorage.setItem('currentUser', JSON.stringify(user)); //Get Current User
-      localStorage.setItem('token', token);
       localStorage.setItem('signInTime',signInTime); //store sign-in time
 
       setError(null);
@@ -50,9 +46,8 @@ export const AuthProvider = ({children}) => {
     await axios.get('/api/auth/signout');
     localStorage.removeItem('currentUser');
     localStorage.removeItem('token');     
-    
     setCurrentUser(null);
-    setAuthToken(null);
+    
   };
   const checkAutoSignOut = (navigate) => {
     const signInTime = localStorage.getItem('signInTime');
@@ -71,24 +66,17 @@ useEffect(() => {
     checkAutoSignOut(navigate);
 }, []);
 
-
-
-
   useEffect(() => {
       const storedUser = JSON.parse(localStorage.getItem('currentUser'));
-      const storedToken = localStorage.getItem('authToken');
     
-      if (storedUser && storedToken) {
+      if (storedUser) {
         setCurrentUser(storedUser);
-        setAuthToken(storedToken);
       }
   }, []);
   
   const contextValue ={
       currentUser,
       setCurrentUser,
-      authToken,
-      setAuthToken,
       loading,
       setLoading,
       setError,

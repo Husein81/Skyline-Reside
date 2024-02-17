@@ -9,7 +9,7 @@ const Header = () => {
   const navigate  = useNavigate();
   const { signOut, currentUser } = useAuth();
   const [searchTerm, setSearchTerm] = useState("");
-  
+  console.log(currentUser)
   const handleSubmit = (e) =>{
     e.preventDefault();
     const urlParams = new URLSearchParams(window.location.search);

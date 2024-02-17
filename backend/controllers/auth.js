@@ -25,7 +25,7 @@ export const signup = asyncHandler(async (req, res) => {
   });
 });
 
-export const signin = asyncHandler(async(req, res ) => {
+export const signin = asyncHandler(async(req, res, next ) => {
   const { username, password } = req.body;
   try { 
     const user = await User.findOne({ username });
@@ -102,7 +102,7 @@ export const twitterSignIn = asyncHandler(async (req, res) => {
 });
 export const googleSignIn = asyncHandler(async(req, res) => {
   const { username, email, photo } = req.body;
-  const user = await User.findOne({ email })
+  const user = await User.findOne({ $or:[{username},{email}] })
 
   if(user){
     generateToken(res,user._id);
@@ -123,6 +123,7 @@ export const googleSignIn = asyncHandler(async(req, res) => {
       avatar: photo,
     });
     generateToken(res, newUser._id);
+
     const { password:pass, ...rest} = newUser._doc;
     res.status(StatusCodes.CREATED).json(rest);
   }

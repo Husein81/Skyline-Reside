@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import { GoogleAuth } from '../components/GoogleAuth';
+
 const SignUp = () => {
 
   const [formData, setFormData] = useState({
@@ -24,7 +25,8 @@ const SignUp = () => {
     e.preventDefault();
     try{
       setLoading(true)
-      await axios.post('/api/auth/signup',formData)
+      const {data} = await axios.post('/api/auth/signup',formData);
+      console.log(data)
       setError(null);
       
       navigate('/')
