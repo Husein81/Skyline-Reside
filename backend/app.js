@@ -1,6 +1,6 @@
 import express  from "express";
 import path from "path";
-import connection from "./Config/connect.js";
+import connectDB from "./Config/connect.js";
 import dotenv from "dotenv";
 import userRouter from './routes/user.js';
 import listingRouter from './routes/listings.js';
@@ -34,16 +34,9 @@ app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 4000;
 
-const start= async () => {
-    try{
-        //connect to DB
-        await connection(process.env.MONGO_CONNECT);
-        app.listen(port,()=>{
-            console.log(`Server is listening on port ${port}...`)
-        })
-    }catch(error){
-        console.log(error);
-    }
-}
 
-start();
+        //connect to DB
+connectDB();
+app.listen(port,() => console.log(`Server is listening on port ${port}...`))
+   
+
