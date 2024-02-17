@@ -124,13 +124,7 @@ const CreateListing = () => {
     }
     try {
       const info = { ...formData,userRef: currentUser._id }
-      console.log(info);
-      const { data } = await axios.post("/api/listing/create", info,
-      { 
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        }
-      });
+      const { data } = await axios.post("/api/listing/create", info);
       setLoading(false);
       navigate(`/listing/${data._id}`);
     } catch (error) {

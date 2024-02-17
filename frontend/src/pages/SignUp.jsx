@@ -24,8 +24,7 @@ const SignUp = () => {
     e.preventDefault();
     try{
       setLoading(true)
-      const { data } = await axios.post('/api/auth/signup',formData)
-      console.log(data);
+      await axios.post('/api/auth/signup',formData)
       setError(null);
       
       navigate('/')
