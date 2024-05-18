@@ -32,7 +32,7 @@ const CreateListing = () => {
   const [loadingUpload, setLoadingUpload] = useState(false);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { currentUser, authToken } = useAuth()
+  const { currentUser } = useAuth()
   const navigate = useNavigate();
 
   const storeImage = async (image) => {
@@ -113,7 +113,6 @@ const CreateListing = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = localStorage.getItem('token');
     if (formData.imageUrls.length < 1) {
       setError("You must upload at least one image");
       return;

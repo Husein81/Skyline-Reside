@@ -57,8 +57,8 @@ const SignIn = () => {
         <hr className='font-bold' />
         <div className="flex gap-4 justify-center">
         <GoogleAuth/>
-        <TwitterAuth/>
-        <FacebookAuth/>
+        {/* <TwitterAuth/>
+        <FacebookAuth/> */}
         </div>
       </form>
 

@@ -22,7 +22,7 @@ const Profile = () => {
     email:'',
     password:'',
   });
-  const { setCurrentUser,currentUser, loading, error } =useAuth();
+  const { setCurrentUser,currentUser, loading, error, signOut } =useAuth();
   const [updateSuccess, setUpdateSuccess] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [uploadError, setUploadError] = useState(null);
@@ -38,11 +38,12 @@ const Profile = () => {
   },[file]);
   
   
-    const handleFileUpload = (file) => {
+  const handleFileUpload = (file) => {
     const storage = getStorage(app);
     const fileName = new Date().getTime() + file.name;
     const storageRef = ref(storage, fileName);
     const uploadTask = uploadBytesResumable(storageRef, file);
+    
     uploadTask.on(
       "state_changed",
       (snapshot) => {
@@ -115,6 +116,10 @@ const Profile = () => {
       console.log(error.response.data.message);
     }
   };
+  const handelSignOut = async () => {
+    signOut();
+    navigate('/');
+  }
   return (
     <div className="p-3 max-w-lg mx-auto">
       <h1 className="text-3xl font-semibold text-center my-7">Profile</h1>
@@ -149,7 +154,6 @@ const Profile = () => {
         <button
           disabled={loading}
           className="bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80"
-         
         >
           {loading ? "Loading..." : "Update"}
         </button>
@@ -167,7 +171,9 @@ const Profile = () => {
         >
           Delete Account
         </span>
-
+        <button onClick={handelSignOut} className="text-red-700">
+          sign Out
+        </button>
       </div>
       <p className="text-red-700 mt-5">{error ? error : ""}</p>
       <p className="text-green-700 mt-5">

@@ -8,12 +8,12 @@ import { FaGoogle } from "react-icons/fa6";
 import { useEffect } from 'react';
 
 export const GoogleAuth = () => {
-
+  
   const navigate = useNavigate();
   const { currentUser, setCurrentUser } = useAuth();
-  console.log(currentUser)
-  const handleGoogleClick = async () => {
-    
+ 
+  const handleGoogleClick = async (e) => {
+    e.preventDefault();
     try{
       const provider = new GoogleAuthProvider();
       const auth = getAuth(app);
@@ -24,7 +24,6 @@ export const GoogleAuth = () => {
         email: result.user.email,
         photo: result.user.photoURL,
       });
-      console.log(data)
       const  user  = data._doc;
     
       localStorage.setItem('currentUser', JSON.stringify(user));
@@ -33,12 +32,10 @@ export const GoogleAuth = () => {
       console.log("could not sign in with google", error);
     }
   }
-  useEffect(() => {
-   console.log(currentUser)
-  },[])
+
   return (
     <div 
-    className='cursor-pointer shadow-md hover:bg-red-600 bg-red-700 text-white rounded flex items-center gap-2 py-2 px-3 w-fit' 
+    className='cursor-pointer shadow-md hover:bg-red-600 uppercase bg-red-700 text-white rounded flex text-center justify-center items-center gap-2 py-2 px-3 w-full' 
     onClick={handleGoogleClick}>
     <FaGoogle
     type="button"

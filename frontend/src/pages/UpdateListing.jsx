@@ -35,7 +35,6 @@ const UpdateListing = () => {
   const [loading, setLoading] = useState(false);
   const { currentUser } = useAuth();
   const navigate = useNavigate();
-  const authToken = localStorage.getItem('token')
 
   useEffect(() => {
     const getListingDetails = async () => {

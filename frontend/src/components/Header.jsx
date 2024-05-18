@@ -7,9 +7,9 @@ import { useEffect, useState } from "react";
 const Header = () => {
 
   const navigate  = useNavigate();
-  const { signOut, currentUser } = useAuth();
+  const { currentUser } = useAuth();
   const [searchTerm, setSearchTerm] = useState("");
-  console.log(currentUser)
+  
   const handleSubmit = (e) =>{
     e.preventDefault();
     const urlParams = new URLSearchParams(window.location.search);
@@ -23,10 +23,8 @@ const Header = () => {
     setSearchTerm(urlParams.get('searchTerm') || "");
   },[]);
 
-  const handelSignOut = async () => {
-    signOut();
-    navigate('/');
-  }
+
+
   return (
     <header className="bg-slate-200 shadow-md">
         <div className="flex justify-between items-center max-w-6xl mx-auto p-3">
@@ -49,7 +47,7 @@ const Header = () => {
               <FaSearch className="text-slatw-600"/>
             </button>
         </form>
-        <ul className="flex gap-4 ">
+        <ul className="flex gap-4 item-center text-center">
           <Link to={"/"}>
             <li className="hidden sm:inline text-slate-700 hover:underline">Home</li>
           </Link>
@@ -61,12 +59,9 @@ const Header = () => {
           ? 
           (
 
-          <div className="gap-6 flex">
-          <Link to={"/profile"}>
-             <li className="hidden sm:inline text-slate-700 hover:underline">{currentUser["username"]} </li>
-          </Link>
-          <Link to={'/sign-in'} onClick={handelSignOut}>
-            <li className={`hidden sm:inline text-slate-700 hover:underline`}>Sign out</li>
+          <div className="gap-6 flex ">
+          <Link  to={"/profile"}>
+             <img className="rounded-full border w-8 h-8"src={currentUser["avatar"]} alt="" />
           </Link>
           </div>
           ) : (
